@@ -17,7 +17,7 @@
   border-radius: 5px;
   padding: 2rem;
   width: 50%;
-  box-sizing: border-box; /* Ensure padding inside the modal is considered in the width */
+  box-sizing: border-box;
 }
 
 .modal_header {
@@ -65,7 +65,7 @@ textarea {
   border-radius: 5px;
   font-size: 16px;
   color: var(--text-color);
-  box-sizing: border-box; /* Ensures padding and border are included in the width */
+  box-sizing: border-box;
 }
 
 .multilineInput {
@@ -81,4 +81,59 @@ textarea {
   flex-direction: row;
   justify-content: space-between;
   gap: 10px;
+}
+
+.error_message {
+  font-size: 12px;
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: 80%;
+    padding: 1.5rem;
+  }
+
+  .modal_add_btn {
+    padding: 10px 30px;
+  }
+
+  .form_input > input[type="text"],
+  .form_input > textarea {
+    font-size: 14px;
+  }
+
+  .tags_button_list {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .modal_add_btn {
+    padding: 8px 20px;
+  }
+
+  .form_input > h4 {
+    font-size: 14px;
+  }
+
+  .form_input > input[type="text"],
+  .form_input > textarea {
+    font-size: 14px;
+  }
+
+  .tags_button_list {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .error_message {
+    font-size: 10px;
+  }
 }

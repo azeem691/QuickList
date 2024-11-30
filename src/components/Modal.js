@@ -12,6 +12,10 @@ const Modal = ({ closeModal, saveTask, taskToEdit }) => {
   };
 
   const [formData, setFormData] = useState(initialData);
+  const [errors, setErrors] = useState({
+    title: false,
+    description: false,
+  });
 
   useEffect(() => {
     if (taskToEdit) {
@@ -50,9 +54,21 @@ const Modal = ({ closeModal, saveTask, taskToEdit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    saveTask(formData);
-    setFormData(initialData);
-    closeModal();
+
+    // Validation
+    const newErrors = {
+      title: !formData.title,
+      description: !formData.description,
+    };
+
+    setErrors(newErrors);
+
+    if (!newErrors.title && !newErrors.description) {
+      // If there are no errors, save the task and close the modal
+      saveTask(formData);
+      setFormData(initialData);
+      closeModal();
+    }
   };
 
   return (
@@ -79,6 +95,9 @@ const Modal = ({ closeModal, saveTask, taskToEdit }) => {
                 onChange={handleInput}
                 placeholder="Add a title..."
               />
+              {errors.title && (
+                <p className="error_message">Title is mandatory</p>
+              )}
             </div>
             <div className="form_input">
               <h4>Description</h4>
@@ -90,9 +109,12 @@ const Modal = ({ closeModal, saveTask, taskToEdit }) => {
                 onChange={handleInput}
                 placeholder="Add a description..."
               ></textarea>
+              {errors.description && (
+                <p className="error_message">Description is mandatory</p>
+              )}
             </div>
             <div className="form_input">
-              <h4>Tags</h4>
+              <h4>Select Tags</h4>
               <div className="tags_button_list">
                 <Tag
                   tagName="work"

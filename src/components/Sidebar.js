@@ -1,5 +1,6 @@
 import React from "react";
 import Tag from "./Tag";
+import "./Sidebar.css";
 
 const Sidebar = ({
   setActiveTag,
@@ -21,26 +22,28 @@ const Sidebar = ({
 
   return (
     <aside>
-      <Tag
-        tagName="work"
-        selectTag={handleTagSelect}
-        selected={activeTag === "work"}
-      />
-      <Tag
-        tagName="study"
-        selectTag={handleTagSelect}
-        selected={activeTag === "study"}
-      />
-      <Tag
-        tagName="entertainment"
-        selectTag={handleTagSelect}
-        selected={activeTag === "entertainment"}
-      />
-      <Tag
-        tagName="family"
-        selectTag={handleTagSelect}
-        selected={activeTag === "family"}
-      />
+      <div className="tag-container">
+        <Tag
+          tagName="work"
+          selectTag={handleTagSelect}
+          selected={activeTag === "work"}
+        />
+        <Tag
+          tagName="study"
+          selectTag={handleTagSelect}
+          selected={activeTag === "study"}
+        />
+        <Tag
+          tagName="entertainment"
+          selectTag={handleTagSelect}
+          selected={activeTag === "entertainment"}
+        />
+        <Tag
+          tagName="family"
+          selectTag={handleTagSelect}
+          selected={activeTag === "family"}
+        />
+      </div>
 
       <div
         style={{
